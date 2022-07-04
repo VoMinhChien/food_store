@@ -1,0 +1,98 @@
+﻿@model IEnumerable<asmC5.Models.Foods>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_Layout";
+}
+ <p>@ViewBag.userid</p>
+<h1>FOOD LIST</h1>
+ @using (Html.BeginForm())
+    {
+    <p>
+        User full name : @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+    }
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+             NAME OF FOOD
+            </th>
+            <th>
+               PRICE
+            </th>
+            <th>
+               PICTURE
+            </th>
+            <th>
+               DESCRIBE
+            </th>
+            <th>
+                DATE CREATED
+            </th>
+            <th>
+                DAY UPDATED
+            </th>
+            <th>
+             CREATOR
+            </th>
+            <th>
+               TAX
+            </th>
+            <th>
+                ISDELETE
+            </th>
+            <th>
+               TYPE OF DISH
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodPrice)
+            </td>
+            <td>
+                <img src="~/TaiLieu/@item.FoodImage" width="50px" height="50px" />
+                @Html.DisplayFor(modelItem => item.FoodImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifyBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryModels.CategorName)
+            </td>
+            <td>
+              <button style="width:80px" type="button" class="btn btn-outline-info"> <a asp-action="Edit" asp-route-id="@item.FoodID">Edit</a></button>
+                <button style="width:80px"  type="button" class="btn btn-outline-warning">  <a asp-action="Details" asp-route-id="@item.FoodID">Details</a> </button>
+                <button style="width:80px"  type="button" class="btn btn-outline-danger"><a asp-action="Delete" asp-route-id="@item.FoodID">Delete</a></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,91 @@
+﻿@model asmC5.Models.Foods
+
+@{
+    ViewData["Title"] = "Details";
+    var df= @ViewBag.duoi;
+}
+@{
+    Layout = "_Layout";
+}
+<h1>    DETAILS OF DISH</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <label>NAME OF FOOD</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>PRICE</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodPrice)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>PICTURE</label>
+
+        </dt>
+        <dt class = "col-sm-10">@Html.ActionLink("Download", "DownloadFile", new { filename = Model.FoodImage })</dt>
+       <dt class = "col-sm-12">
+            @if (df == ".png" || df == ".jpeg" || df == ".gif" || df == ".tiff" || df == ".psd" || df == ".jfif"||df==".jpg"||df==".pdf")
+            {
+                <img src="~/TaiLieu/@Model.FoodImage" width="250px" height="250px" />
+            }
+            
+        </dt>
+        
+        <dd class = "col-sm-12">
+            @Html.DisplayFor(model => model.FoodImage)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>DESCRIBE</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodType)
+        </dd>
+        <dt class = "col-sm-2">
+            <label>DATE CREATED</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatDate)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>DAY UPDATED</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModifyDate)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>CREATOR</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModifyBy)
+        </dd>
+        <dt class = "col-sm-2">
+            <label>TAX</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VAT)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>ISDELETE</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt class = "col-sm-2">
+             <label>TYPE OF DISH</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryModels.CategorName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FoodID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

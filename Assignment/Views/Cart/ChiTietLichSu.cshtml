@@ -1,0 +1,50 @@
+﻿@model IEnumerable<asmC5.Models.CartDetails>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSanPham.cshtml";
+}
+
+<h1>Shopping Cart Details</h1>
+
+<table class="table">
+  <thead>
+        <tr>
+            <th>
+             NAME OF FOOD
+            </th>
+            <th>
+               SỐ LƯỢNG
+            </th>
+            <th>
+               PICTURE
+            </th>
+            AMOUNT
+            <th>
+               PRICE
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodMount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodImage)
+                 <img src="~/TaiLieu/@item.FoodImage" width="50px" height="50px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodType)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

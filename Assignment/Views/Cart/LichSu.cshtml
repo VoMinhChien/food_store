@@ -1,0 +1,61 @@
+﻿@model IEnumerable<asmC5.Models.Carts>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSanPham.cshtml";
+}
+
+<h1>
+BUYING HISTORY</h1>
+
+<p>
+   
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                BUYING DATE
+            </th>
+            <th>
+                STATUS
+            </th>
+            
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>
+            <td>
+                @{
+                    @if (item.IsDelete==false)
+                    {
+                            <a>Delivery in progress</a>
+                        }
+                        else
+                        {
+                            <a>Delivered</a>
+                        }
+                    }
+                    
+                    
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+           
+           
+            <td>
+             
+                <a style="width:160px"  class="btn btn-outline-warning">  <a asp-controller="Cart" asp-action="ChiTietLichSu" asp-route-id="@item.CardId">See details</a> </a>
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

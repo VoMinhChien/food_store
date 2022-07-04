@@ -1,0 +1,62 @@
+﻿@using Assignment.Controllers
+@{
+    Layout = "_LayoutSanPham";
+}
+<form >
+       <div>
+           <h3>Delivery Address Confirmation</h3><br>
+           <div style="text-align:left;margin-left:20%">
+
+                @if (ViewBag.user !="")
+                {
+                    <a>
+                       <b style="font-size:20px">Customer's full name :</b> @UsersController.ctm.UserFullName<br>
+                       <b>Delivery Address :</b> @UsersController.ctm.UserAddress<br>
+                      <b>SDT Customer :</b>  @UsersController.ctm.UserPhone<br>
+                     
+                    </a>               
+                }
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FOODSNAME</th>
+                       
+                        
+                            <th>FOODPRICE</th>
+                        
+                        
+                            <th>AMOUNT</th>
+                        </tr>
+                    </thead>
+               
+                 @foreach (var item in ViewBag.cart)
+                {
+                  <tr>
+                      <td>   @item.sp.FoodName</td>
+                       <td>  @item.sp.FoodPrice </td>
+                        <td>  @item.SoLuong </td>
+                        <td><a asp-controller="ShowGioHang" asp-action="remove" asp-route-id="@item.sp.FoodID"><b>REMOVE</b></a></td>
+                  </tr>
+              @* <div class="table-bordered" style="color:greenyellow">
+                    
+                    <div><b>FOODNAME : </b>  </div>
+                    <div ><b>FOODPRICE :</b></div>
+                   <div ><b>AMOUNT :</b></div>
+                    <div ></div>
+               </div>*@
+                  
+
+                    // <span align="right" colspan="6">Sum</span>
+                }
+                 </table>
+                <div class="cart-total" style="color:red">
+                            <strong class="cart-total-title"><b>Total:</b></strong>
+                            <span class="cart-total-price">@ViewBag.total VNĐ</span>
+                 </div>
+                
+               <a asp-controller="ShowGioHang" asp-action="Order" class="btn btn-outline-success">Order</a>
+                
+               </div>
+            </div>
+   </form>

@@ -1,0 +1,90 @@
+﻿@model asmC5.Models.User
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@{
+    Layout = "_Layout";
+}
+
+<h1>DELETE CUSTOMERS</h1>
+
+<h3>Are you sure you want to delete this customer?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            NAME
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserFullName)
+        </dd>
+        <dt class = "col-sm-2">
+           EMAIL
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+        <dt class = "col-sm-2" hidden>
+            PASSWORD
+        </dt>
+        <dd class = "col-sm-10" hidden>
+            @Html.DisplayFor(model => model.UserPassWord)
+        </dd>
+        <dt class = "col-sm-2">
+           SEX
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserGender)
+        </dd>
+        <dt class = "col-sm-2">
+           DATE OF BIRTH
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserBirtday)
+        </dd>
+        <dt class = "col-sm-2">
+            PHONE
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserPhone)
+        </dd>
+        <dt class = "col-sm-2">
+           ADDRESS
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserAddress)
+        </dd>
+        <dt class = "col-sm-2" hidden>
+            @Html.DisplayNameFor(model => model.UserToken)
+        </dt>
+        <dd class = "col-sm-10" hidden>
+            @Html.DisplayFor(model => model.UserToken)
+        </dd>
+        <dt class = "col-sm-2"hidden>
+            @Html.DisplayNameFor(model => model.UserTokenGG)
+        </dt>
+        <dd class = "col-sm-10" hidden>
+            @Html.DisplayFor(model => model.UserTokenGG)
+        </dd>
+        <dt class = "col-sm-2" >
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Roles.RoleName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="GetCus">Back to List</a>
+    </form>
+</div>

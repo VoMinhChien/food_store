@@ -1,0 +1,214 @@
+﻿
+@{
+    Layout = "_LayoutSanPham";
+    float tong=0;
+}
+<style>
+
+   .modal-content {
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+  
+  }
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    display: flex;
+    border-top: 1px solid #aaaaaa;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: 1px solid #aaaaaa;
+    padding: 1rem;
+  }
+  
+  .modal-footer>:not(:first-child) {
+    margin-left: .25rem;
+  }
+  #cart {
+    font-size: 15px;
+    color: #fff;
+    background: #c7b200;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    margin-left: 1rem;
+    padding: 12px;
+    cursor: pointer;
+  }
+  
+  #cart:hover {
+    border-color: #fff;
+  }
+  .cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+  }
+  
+  .cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  .cart-row {
+    display: flex;
+  }
+  
+  .cart-item {
+    width: 45%;
+  }
+  
+  .cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .cart-quantity {
+    width: 35%;
+  }
+  
+  .cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+  }
+  
+  .cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+  }
+  
+  .btn-danger:hover {
+    background-color: #CC4C4C;
+  }
+  
+  .cart-quantity-input {
+    height: 34px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+  }
+  
+  .cart-row:last-child {
+    border-bottom: 1px solid black;
+  }
+  
+  .cart-row:last-child .cart-column {
+    border: none;
+  }
+  
+  .cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  
+  .cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+  }
+  
+  .cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+  }
+  .cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+  }
+</style>
+
+  <div class="text-center">
+        @Html.Raw(TempData["checkout__alert--success"])
+    </div>
+
+@if (ViewBag.cart != null)
+{
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Cart</h5>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">Product</span>
+                <span class="cart-price cart-header cart-column">Price</span>
+                <span class="cart-quantity cart-header cart-column">amount</span>
+            </div>
+
+
+            <div class="cart-items">
+
+                @foreach (var item in ViewBag.cart)
+                {
+                    <div class="" style="width:43%;float:left">@item.sp.FoodName  </div>
+                    <div class="" style="width:36%;float:left">@item.sp.FoodPrice</div>
+                  
+                    <div class=""  style="width:17%;float:left"> @item.SoLuong</div>
+               
+                    <div style="width:4%;float:left"><a asp-controller="ShowGioHang" asp-action="remove" asp-route-id="@item.sp.FoodID"><b>X</b></a></div>
+
+                    // <span align="right" colspan="6">Sum</span>
+                }
+
+                        </div>
+                        
+
+
+                        <div class="cart-items">
+
+                        </div>
+                        <div class="cart-total">
+                            <strong class="cart-total-title">Total:</strong>
+                            <span class="cart-total-price">@ViewBag.total VNĐ</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a type="button"  asp-controller="Home" asp-action="Index" class="btn btn-secondary close-footer">Close</a>
+                        <a  asp-controller="ShowGioHang" asp-action="XacNhan"  class="btn btn-primary order">Confirm</a>
+                    </div>
+                </div>
+}
+
+@if(ViewBag.cart == null)
+{
+    <div>There are no products in the cart</div>
+    <a class="btn btn-danger" asp-action="Index" asp-controller="Home">Continue shopping</a>
+}
+
+    

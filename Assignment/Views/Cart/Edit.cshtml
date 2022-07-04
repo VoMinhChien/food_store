@@ -1,0 +1,85 @@
+﻿@model asmC5.Models.Carts
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Status</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CardId" />
+            <div class="form-group" hidden>
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="UserFullName" class="control-label"></label>
+                <input asp-for="UserFullName" class="form-control" />
+                <span asp-validation-for="UserFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="UserPhone" class="control-label"></label>
+                <input asp-for="UserPhone" class="form-control" />
+                <span asp-validation-for="UserPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="UseAddress" class="control-label"></label>
+                <input asp-for="UseAddress" class="form-control" />
+                <span asp-validation-for="UseAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="CardTocal" class="control-label"></label>
+                <input asp-for="CardTocal" class="form-control" />
+                <span asp-validation-for="CardTocal" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="VAT" class="control-label"></label>
+                <input asp-for="VAT" class="form-control" />
+                <span asp-validation-for="VAT" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="PaymentDate" class="control-label"></label>
+                <input asp-for="PaymentDate" class="form-control" />
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group"hidden>
+                <label asp-for="PaymentTypeId" class="control-label"></label>
+                <input asp-for="PaymentTypeId" class="form-control" asp-items="ViewBag.PaymentTypeId"  value="1"/>
+                <span asp-validation-for="PaymentTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+               <div><b>STATUS</b></div> 
+                <label class="form-check-label">Đã Giao :
+                    <input class="form-check-input" asp-for="IsDelete" style="border:outset"/> @Html.DisplayNameFor(model => model.IsDelete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

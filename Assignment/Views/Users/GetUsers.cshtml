@@ -1,0 +1,97 @@
+﻿@model IEnumerable<asmC5.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_Layout";
+}
+
+<h1>DANH SÁCH USERS</h1>
+ @using (Html.BeginForm())
+    {
+    <p>
+        User full name : @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+    }
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               NAME
+            </th>
+            <th>
+                EMAIL
+            </th>
+           
+            <th>
+                SEX
+            </th>
+            <th>
+                DATE OF BIRTH
+            </th>
+            <th>
+                PHONE
+            </th>
+            <th>
+                ADDRESS
+            </th>
+           
+            <th>
+                ISDELETE
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.UserGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserBirtday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAddress)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDelete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roles.RoleName)
+            </td>
+            <td>
+             <button style="width:80px" type="button" class="btn btn-outline-info"> <a asp-action="EditUser" asp-route-id="@item.UserId">Edit</a></button>
+                <button style="width:80px"  type="button" class="btn btn-outline-warning">  <a asp-action="Details" asp-route-id="@item.UserId">Details</a> </button>
+              
+                    @if (item.RoleID == 1)
+                    {
+                        
+                    }
+                    @if(item.RoleID==2){
+                         <button style="width:80px"  type="button" class="btn btn-outline-danger"><a asp-action="Delete" asp-route-id="@item.UserId">Delete</a></button>
+                    }
+
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

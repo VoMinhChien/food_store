@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJh0Xi9yQyUWzgwOSbS8GOQAAAAACAAAAAAAQZgAAAAEAACAAAAAnm+tRhxzwuv3pT0KsEt2GmvcX7zrFhkzPwJLgfHV0iAAAAAAOgAAAAAIAACAAAADe19ZOfnuyEh4Ym25FkfmPdH+qOI4XfSKew1Fi/JO7RCAAAABD9Vttk1yJKOgwO1bO7Sq4uR/NHptIcEcxO/qpejl/DUAAAABpQRkKwJaNIbipK0fCr2YDzgcIjRyyc5UuK5jatyhodN+N933ifo3AIrgCKiQaKwZ29tzMeXcTF3zWRZxWV+/f</EncryptedPassword>
+    <History>True|2022-07-04T04:57:00.5524506Z;True|2022-07-04T11:48:58.9377764+07:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL8003.site4now.net%3bInitial Catalog=db_a88bfb_minhchienhk38%3bUser Id=db_a88bfb_minhchienhk38_admin%3bPassword=Samsung2629%40</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Assignment.Models.DataContext">
+      <Value>Data Source=SQL8003.site4now.net%3bInitial Catalog=db_a88bfb_minhchienhk38%3bUser Id=db_a88bfb_minhchienhk38_admin%3bPassword=Samsung2629%40</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

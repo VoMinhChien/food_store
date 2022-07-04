@@ -1,0 +1,23 @@
+﻿
+
+@using asmC5.Models
+
+@{
+    Layout = "_LayoutSanPham";
+   
+     var currentProduct = ViewBag.currentProduct as Foods;
+}
+
+
+
+<div style ="text-align:center">
+    <a asp-controller="home" asp-action="index" class="btn btn-primary my-4">Trang chủ</a>
+
+<h2>@currentProduct.FoodName</h2>
+<img src="~/TaiLieu/@currentProduct.FoodImage" width="500"/>
+<div style="text-align:center;color:red;font-size:30px"><b>Giá Sản Phẩm :</b>@currentProduct.FoodPrice VND</div>
+<div style="font-weight:bold; text-align:center"> Thông Tin:<br /> </div>
+<div> @currentProduct.FoodType</div>
+<a class="btn btn-primary my-4" asp-controller="ShowGioHang" asp-action="buy" asp-route-id="@currentProduct.FoodID"  >Thêm Vào Giỏ <i class="fa fa-shopping-cart" style="font-size:36px"></i></a>
+</div>
+

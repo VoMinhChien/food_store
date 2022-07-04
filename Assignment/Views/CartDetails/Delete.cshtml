@@ -1,0 +1,70 @@
+﻿@model asmC5.Models.CartDetails
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CartDetails</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodMount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodMount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodImage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodImage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VAT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VAT)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Carts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Carts.CardId)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Foods)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Foods.FoodImage)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CartdetailId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,83 @@
+﻿@model asmC5.Models.Foods
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@{
+    Layout = "_Layout";
+}
+<h1>XÓA MÓN ĂN</h1>
+
+<h3>Bạn chắc chắn muốn xóa món ăn này không?</h3>
+<div>
+    <h4>Foods</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            TÊN MÓN
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+        <dt class = "col-sm-2">
+           GIÁ BÁN
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            HÌNH ẢNH
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodImage)
+        </dd>
+        <dt class = "col-sm-2">
+            MÔ TẢ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodType)
+        </dd>
+        <dt class = "col-sm-2">
+            NGÀY TẠO
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatDate)
+        </dd>
+        <dt class = "col-sm-2">
+            NGÀY SỬA
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModifyDate)
+        </dd>
+        <dt class = "col-sm-2">
+           MÃ NGƯỜI TẠO
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModifyBy)
+        </dd>
+        <dt class = "col-sm-2">
+           THUẾ VAT
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VAT)
+        </dd>
+        <dt class = "col-sm-2">
+            ISDELETE
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt class = "col-sm-2">
+            LOẠI MÓN
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryModels.CategorName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="FoodID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

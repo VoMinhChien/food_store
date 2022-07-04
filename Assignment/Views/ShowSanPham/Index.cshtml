@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+	Layout="_LayoutSanPham";
+	
+}
+
+
+
+@using asmC5.Models
+
+@{
+    //Layout = "_Layout";
+    var sanphams = ViewBag.SanPhams as List<Foods>;
+    var currentProduct = ViewBag.idcantim;
+}
+
+
+<div class ="products">
+      @using (Html.BeginForm())
+                                {
+                                <p>
+                                    Search product : @Html.TextBox("SearchString") <input type="submit" value="SEARCH" />
+                                </p>
+                                }
+     <section class="section section-lg bg-default" >
+         <div class="container" >
+          <h3 class="oh-desktop"><span class="d-inline-block wow slideInUp">Selected Foods</span></h3>
+          <div class="row row-lg row-30" >
+            
+            
+     @if(sanphams != null)
+    {
+        foreach (var product in sanphams)
+        {
+           
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          
+              <!-- Product-->
+              <article class="product wow fadeInLeft" data-wow-delay=".1s">
+                <div class="product-figure"><img src="~/TaiLieu/@product.FoodImage" alt="" width="161" height="162"/>
+                </div>
+                <div class="product-rating"><span class="mdi mdi-star"></span><span class="mdi mdi-star"></span><span class="mdi mdi-star"></span><span class="mdi mdi-star"></span><span class="mdi mdi-star"></span>
+                </div>
+                <h6 class="product-title">@product.FoodName</h6>
+                <h7>@product.FoodType</h7>
+                <div class="product-price-wrap">
+                  <div class="product-price">@product.FoodPrice.ToString() <a>VND</a></div>
+                </div>
+                <div class="product-button">
+                  <div class="button-wrap"><a class="button button-xs button-primary button-winona"  asp-controller="ShowGioHang" asp-action="buy" asp-route-id="@product.FoodID">Add to cart</a></div>
+                  <div class="button-wrap"><a class="button button-xs button-secondary button-winona" asp-controller="ShowSanPham" asp-action="Details" asp-route-id="@product.FoodID" >View Product</a></div>
+                </div><span class="product-badge product-badge-new">New</span>
+              </article>
+              </div>
+              }
+                  }
+            
+          </div>
+        </div>
+      </section>
+        
+
+
+</div>
+
